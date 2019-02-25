@@ -1,0 +1,65 @@
+<div class="conteiner-fluid">
+	<h1 class="text-center mt-4 mb-4">Employees Register</h1>
+	<form>
+		<div class="form-row">
+			<div class="col-11 m-auto p-4 border border-secondary">
+				<p class="text-left h4">Create/Edit</p>
+				<hr>
+				<div class="form-row">
+					<div class="col">
+						<input type="text" class="form-control" id="inName"  placeholder="Name">
+					</div>
+				</div>
+				<!-- change the margin later-->
+				<div class="form-row">
+					<div class="col-6 col-md-4 mt-4">
+						<input type="number" class="form-control" id="inAge"  placeholder="Age">
+					</div>
+					<div class="col-6 col-md-4 mt-4">
+						<input type="date" class="form-control" id="inBirthDay"  placeholder="Birth day">
+					</div>
+					<div class="col-6 col-md-4 mt-4">
+						<input type="text" class="form-control" id="inPhoneNumber"  placeholder="Phone number">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col col-md-4 col-lg-3 mt-4">
+						<input type="text" class="form-control" id="inRG"  placeholder="RG">
+					</div>
+					<div class="col col-md-4 col-lg-3 mt-4">
+						<input type="text" class="form-control" id="inCPF"  placeholder="CPF">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col-12 col-md-9 col-lg-10 mt-4">
+						<input type="text" class="form-control" id="inAdress"  placeholder="Adress">
+					</div>
+					<div class="col-4 col-md-3 col-lg-2 mt-4">
+						<input type="number" class="form-control" id="inNumber"  placeholder="Number">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col col-md-5 col-lg-4 col-xl-3 mt-4">
+						<input type="text" class="form-control" id="inCity"  placeholder="City">
+					</div>
+					<div class="col col-md-5 col-lg-4 col-xl-3 mt-4">
+						<input type="text" class="form-control" id="inState"  placeholder="State">
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="col mt-4">
+						<textarea class="form-control" id="txtNotes" rows="3" placeholder="Notes"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col mt-4">
+						<div class="float-right">
+							<button type="button" id="btnAddEmployee" class="mr-4 btn btn-success" onclick="saveEmployee();">Save</button>
+							<button type="button" class="btn btn-danger" onclick="clearFields();">Cancel</button>
+						</div>
+					</div>
+				</div>
+			</div><!-- border end-->
+		</div><!-- delimiter end-->
+	</form><!-- form end-->
+</div><!-- conteiner fluid -->
