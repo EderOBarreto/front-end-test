@@ -1,6 +1,17 @@
 
+function getEmployeeList(){
+	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
+	console.log(employeesList);
+	if (employeesList === null) {
+		employeesList = [];
+		localStorage.setItem("employeesList",employeesList);
+	}
+	return employeesList;
+}
+
 function employeeLoad(){
-	let list = JSON.parse(localStorage.getItem("employeesList"));
+
+	let list = getEmployeeList();
 
 	if ($("#bookTable tbody").length == 0){
 			$("#bookTable").append("<tbody></tbody>");
@@ -30,7 +41,8 @@ function saveEmployee(){
 }
 
 function addEmployee(){
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
+	let employeesList = getEmployeeList();
+	console.log(employeesList);
 	let employee;
 	if($("#inName").val() != null && $("#inName").val() != ''){
 		employee = getEmployeeData();
@@ -44,7 +56,7 @@ function addEmployee(){
 
 
 function modifyEmployee(employeeEdit){
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
+	let employeesList = getEmployeeList();
 	employee = getEmployeeData();
 	employeesList[employeeEdit.id] = employee;
 	localStorage.setItem("employeesList",JSON.stringify(employeesList));
@@ -54,14 +66,14 @@ function modifyEmployee(employeeEdit){
 
 
 function employeeEdit(id){
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
+	let employeesList = getEmployeeList();
 	employeesList[id].id = id;
 	localStorage.setItem("employeeEdit",JSON.stringify(employeesList[id]));
 	window.location.replace("employee-register.html");
 }
 
 function employeeRemove(button,id){
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
+	let employeesList = getEmployeeList();
 	employeesList.splice(id,1);
 	localStorage.setItem("employeesList",JSON.stringify(employeesList));
 	$(button).parents("tr").remove();
