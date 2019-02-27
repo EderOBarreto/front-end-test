@@ -1,12 +1,19 @@
 
 function getEmployeeList(){
 	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
-	console.log(employeesList);
-	if (employeesList === null) {
+	if (employeesList) {
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
 	}
 	return employeesList;
+}
+
+function setEmployeeList(list){
+	localStorage.setItem("employeesList",JSON.stringify(list));
+}
+
+function getEmployeeEdit(){
+	return JSON.parse(localStorage.getItem("employeeEdit"));
 }
 
 function employeeLoad(){
@@ -16,7 +23,8 @@ function employeeLoad(){
 	if ($("#bookTable tbody").length == 0){
 			$("#bookTable").append("<tbody></tbody>");
 	}
-	for (var i = list.length - 1; i >= 0; i--) {
+
+	for (var i = 0; i < list.length; i++) {
 		$("#employeeTable tbody").append(
 		`<tr class="d-flex">`+
 			`<th scope="row" class="col-2">${i+1}</th>`+
@@ -31,37 +39,31 @@ function employeeLoad(){
 }
 
 function saveEmployee(){
-	let employeeEdit = JSON.parse(localStorage.getItem("employeeEdit"));
-	if (employeeEdit == undefined || employeeEdit == null) {
-		addEmployee();
-	}else{
+	let employeeEdit = getEmployeeEdit();
+	if (employeeEdit) {
 		modifyEmployee(employeeEdit);
+	}else{
+		addEmployee();
 	}
-
+	window.location.replace("index.html");
 }
 
 function addEmployee(){
 	let employeesList = getEmployeeList();
-	console.log(employeesList);
 	let employee;
 	if($("#inName").val() != null && $("#inName").val() != ''){
 		employee = getEmployeeData();
-		clearFields();
-		window.location.replace("index.html");
 	}
 	employeesList.push(employee);
-	localStorage.setItem("employeesList",JSON.stringify(employeesList));
+	setEmployeeList(employeesList);
 }
-
-
 
 function modifyEmployee(employeeEdit){
 	let employeesList = getEmployeeList();
 	employee = getEmployeeData();
 	employeesList[employeeEdit.id] = employee;
-	localStorage.setItem("employeesList",JSON.stringify(employeesList));
+	setEmployeeList(employeesList);
 	localStorage.removeItem("employeeEdit");
-	window.location.replace("index.html");
 }
 
 
