@@ -2,7 +2,7 @@
 function getEmployeeList(){
 	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
 	console.log(employeesList);
-	if (employeesList === null) {
+	if (employeesList) {
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
 	}
