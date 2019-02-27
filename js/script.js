@@ -1,7 +1,6 @@
 
 function getEmployeeList(){
 	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
-	console.log(employeesList);
 	if (employeesList) {
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
@@ -42,7 +41,6 @@ function saveEmployee(){
 
 function addEmployee(){
 	let employeesList = getEmployeeList();
-	console.log(employeesList);
 	let employee;
 	if($("#inName").val() != null && $("#inName").val() != ''){
 		employee = getEmployeeData();
