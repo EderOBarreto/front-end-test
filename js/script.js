@@ -1,10 +1,11 @@
 
 function getEmployeeList(){
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
-	console.log(employeesList);
-	if (employeesList) {
+	let employeesList = localStorage.getItem("employeesList");
+	if (!employeesList) {
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
+	}else{
+		employeesList = JSON.parse(employeesList);
 	}
 	return employeesList;
 }
@@ -32,22 +33,19 @@ function employeeLoad(){
 
 function saveEmployee(){
 	let employeeEdit = JSON.parse(localStorage.getItem("employeeEdit"));
-	if (employeeEdit == undefined || employeeEdit == null) {
+	if (!employeeEdit) {
 		addEmployee();
 	}else{
 		modifyEmployee(employeeEdit);
 	}
-
+	window.location.replace("index.html");
 }
 
 function addEmployee(){
 	let employeesList = getEmployeeList();
-	console.log(employeesList);
 	let employee;
-	if($("#inName").val() != null && $("#inName").val() != ''){
+	if($("#inName").val() !== null && $("#inName").val() !== ''){
 		employee = getEmployeeData();
-		clearFields();
-		window.location.replace("index.html");
 	}
 	employeesList.push(employee);
 	localStorage.setItem("employeesList",JSON.stringify(employeesList));
@@ -61,7 +59,6 @@ function modifyEmployee(employeeEdit){
 	employeesList[employeeEdit.id] = employee;
 	localStorage.setItem("employeesList",JSON.stringify(employeesList));
 	localStorage.removeItem("employeeEdit");
-	window.location.replace("index.html");
 }
 
 
@@ -126,6 +123,3 @@ function clearFields(){
 	$("#inState").val("");
 	$("#txtNotes").val("");
 }
-
-
-
