@@ -1,12 +1,8 @@
 
 function getEmployeeList(){
-<<<<<<< HEAD
-	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
-	if (employeesList) {
-=======
+
 	let employeesList = localStorage.getItem("employeesList");
 	if (!employeesList) {
->>>>>>> testMasks
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
 	}else{
@@ -30,10 +26,7 @@ function employeeLoad(){
 	if ($("#bookTable tbody").length == 0){
 			$("#bookTable").append("<tbody></tbody>");
 	}
-<<<<<<< HEAD
 
-=======
->>>>>>> testMasks
 	for (var i = 0; i < list.length; i++) {
 		$("#employeeTable tbody").append(
 		`<tr class="d-flex">`+
@@ -49,15 +42,9 @@ function employeeLoad(){
 }
 
 function saveEmployee(){
-<<<<<<< HEAD
+
 	let employeeEdit = getEmployeeEdit();
 	if (employeeEdit) {
-=======
-	let employeeEdit = JSON.parse(localStorage.getItem("employeeEdit"));
-	if (!employeeEdit) {
-		addEmployee();
-	}else{
->>>>>>> testMasks
 		modifyEmployee(employeeEdit);
 	}else{
 		addEmployee();
@@ -70,15 +57,9 @@ function addEmployee(){
 	let employee;
 	if($("#inName").val()){
 		employee = getEmployeeData();
-<<<<<<< HEAD
-	}
-	employeesList.push(employee);
-	setEmployeeList(employeesList);
-=======
 		employeesList.push(employee);
-		localStorage.setItem("employeesList",JSON.stringify(employeesList));
+		setEmployeeList(employeesList);
 	}
->>>>>>> testMasks
 }
 
 function modifyEmployee(employeeEdit){
