@@ -1,9 +1,16 @@
 
 function getEmployeeList(){
+<<<<<<< HEAD
 	let employeesList = JSON.parse(localStorage.getItem("employeesList"));
 	if (employeesList) {
+=======
+	let employeesList = localStorage.getItem("employeesList");
+	if (!employeesList) {
+>>>>>>> testMasks
 		employeesList = [];
 		localStorage.setItem("employeesList",employeesList);
+	}else{
+		employeesList = JSON.parse(employeesList);
 	}
 	return employeesList;
 }
@@ -23,7 +30,10 @@ function employeeLoad(){
 	if ($("#bookTable tbody").length == 0){
 			$("#bookTable").append("<tbody></tbody>");
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> testMasks
 	for (var i = 0; i < list.length; i++) {
 		$("#employeeTable tbody").append(
 		`<tr class="d-flex">`+
@@ -39,8 +49,15 @@ function employeeLoad(){
 }
 
 function saveEmployee(){
+<<<<<<< HEAD
 	let employeeEdit = getEmployeeEdit();
 	if (employeeEdit) {
+=======
+	let employeeEdit = JSON.parse(localStorage.getItem("employeeEdit"));
+	if (!employeeEdit) {
+		addEmployee();
+	}else{
+>>>>>>> testMasks
 		modifyEmployee(employeeEdit);
 	}else{
 		addEmployee();
@@ -51,11 +68,17 @@ function saveEmployee(){
 function addEmployee(){
 	let employeesList = getEmployeeList();
 	let employee;
-	if($("#inName").val() != null && $("#inName").val() != ''){
+	if($("#inName").val()){
 		employee = getEmployeeData();
+<<<<<<< HEAD
 	}
 	employeesList.push(employee);
 	setEmployeeList(employeesList);
+=======
+		employeesList.push(employee);
+		localStorage.setItem("employeesList",JSON.stringify(employeesList));
+	}
+>>>>>>> testMasks
 }
 
 function modifyEmployee(employeeEdit){
@@ -100,7 +123,7 @@ function getEmployeeData(){
 
 function fillOutFields(){
 	let employee = JSON.parse(localStorage.getItem("employeeEdit"));
-	if (employee !== undefined && employee !== null) {
+	if (employee) {
 		$("#inName").val(employee.name);
 		$("#inAge").val(employee.age);
 		$("#inBirthDay").val(employee.dataNasc);
@@ -129,5 +152,7 @@ function clearFields(){
 	$("#txtNotes").val("");
 }
 
-
-
+function applyMasks(){
+	$("#inCPF").mask('000-000-000-00');
+	$("#inPhoneNumber").mask('(00)00000-0000');
+}
