@@ -81,7 +81,7 @@ function employeeEdit(id){
 function employeeRemove(button,id){
 	let employeesList = getEmployeeList();
 	employeesList.splice(id,1);
-	localStorage.setItem("employeesList",JSON.stringify(employeesList));
+	setEmployeeList(employeesList);
 	$(button).parents("tr").remove();
 }
 
@@ -103,7 +103,7 @@ function getEmployeeData(){
 }
 
 function fillOutFields(){
-	let employee = JSON.parse(localStorage.getItem("employeeEdit"));
+	let employee = getEmployeeEdit();
 	if (employee) {
 		$("#inName").val(employee.name);
 		$("#inAge").val(employee.age);
