@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<title>Employee Register</title>
 </head>
 <body>
@@ -25,7 +25,7 @@
 						<!-- change the margin later-->
 						<div class="form-row">
 							<div class="col-6 col-md-4 mt-4">
-								<input type="number" class="form-control" id="inAge"  placeholder="Age">
+								<input type="number" class="form-control" id="inAge"  placeholder="Age" min="1">
 							</div>
 							<div class="col-6 col-md-4 mt-4">
 								<input type="date" class="form-control" id="inBirthDay"  placeholder="Birth day">
@@ -47,7 +47,7 @@
 								<input type="text" class="form-control" id="inAdress"  placeholder="Adress">
 							</div>
 							<div class="col-4 col-md-3 col-lg-2 mt-4">
-								<input type="number" class="form-control" id="inNumber"  placeholder="Number">
+								<input type="number" class="form-control" id="inNumber"  placeholder="Number" min="1">
 							</div>
 						</div>
 						<div class="form-row">
@@ -78,9 +78,11 @@
 	</div><!-- main content -->
 	<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/jquery.mask.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(() => {
 			fillOutFields();
+			applyMasks();
 		});
 	</script>
 </body>

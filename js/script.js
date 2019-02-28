@@ -17,7 +17,7 @@ function employeeLoad(){
 	if ($("#bookTable tbody").length == 0){
 			$("#bookTable").append("<tbody></tbody>");
 	}
-	for (var i = list.length - 1; i >= 0; i--) {
+	for (var i = 0; i < list.length; i++) {
 		$("#employeeTable tbody").append(
 		`<tr class="d-flex">`+
 			`<th scope="row" class="col-2">${i+1}</th>`+
@@ -44,14 +44,12 @@ function saveEmployee(){
 function addEmployee(){
 	let employeesList = getEmployeeList();
 	let employee;
-	if($("#inName").val() !== null && $("#inName").val() !== ''){
+	if($("#inName").val()){
 		employee = getEmployeeData();
+		employeesList.push(employee);
+		localStorage.setItem("employeesList",JSON.stringify(employeesList));
 	}
-	employeesList.push(employee);
-	localStorage.setItem("employeesList",JSON.stringify(employeesList));
 }
-
-
 
 function modifyEmployee(employeeEdit){
 	let employeesList = getEmployeeList();
@@ -95,7 +93,7 @@ function getEmployeeData(){
 
 function fillOutFields(){
 	let employee = JSON.parse(localStorage.getItem("employeeEdit"));
-	if (employee !== undefined && employee !== null) {
+	if (employee) {
 		$("#inName").val(employee.name);
 		$("#inAge").val(employee.age);
 		$("#inBirthDay").val(employee.dataNasc);
@@ -122,4 +120,9 @@ function clearFields(){
 	$("#inCity").val("");
 	$("#inState").val("");
 	$("#txtNotes").val("");
+}
+
+function applyMasks(){
+	$("#inCPF").mask('000-000-000-00');
+	$("#inPhoneNumber").mask('(00)00000-0000');
 }
